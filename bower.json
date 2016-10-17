@@ -1,0 +1,10 @@
+{
+  "name": "task-manager",
+  "version": "0.0.2",
+  "description": "simple angular.js based task manager",
+  "dependencies": {
+  	"jquery": "1.12.x",
+  	"bootstrap": "3.3.x",
+  	"angular": "1.5.8"
+  }
+}

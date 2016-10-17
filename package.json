@@ -1,0 +1,26 @@
+{
+  "name": "task-manager",
+  "version": "0.0.2",
+  "description": "simple angular.js based task manager",
+  "contributors": [{
+    "name": "Vasily Liaskovsky",
+    "email": "vasily.liaskovsky@gmail.com"
+  }, {
+    "name": "Lada Gordienkova",
+    "email": "l.gordienkova@gmail.com"
+  }, {
+    "name": "Kirill Mysleiko",
+    "email": "websait.bs@gmail.com"
+  }, {
+    "name": "Nastia Malahova",
+    "email": "plushik.n@gmail.com"
+  }, {
+    "name": "Marina Zhyravlyova",
+    "email": "marinazhyravlyova.17.1@gmail.com"
+  }],
+  "scripts": {
+    "prestart": "bower install",
+    "start": "http-server -p80 -c-1 -s ./app"
+  },
+  "private": true
+}
