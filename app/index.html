@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html ng-app="taskManager">
-
+<html ng-app="taskManager" lang="ru">
 <head>
-    <meta charset="utf-8"/>
-    <title>Angular 2</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-    <script src="/task-manager.js"></script>
-    <script src="/task-item.js"></script>
-    <script src="/task-form.js"></script>
+<meta charset="utf-8" />
+<title>Планировщик задач</title>
+<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.css" />
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/task-manager.js"></script>
+<script src="/task-list.js"></script>
+<script src="/task-form.js"></script>
 </head>
 
-<body ng-controller="MainController as manager">
-    <section class="row">
-		<div class="col-lg-6 col-lg-push-3">
-			<task-form task="activeTask"></task-form>
-			<section class="task-list">
-				<div class="task-filter col-lg-2">
-					<i class="glyphicon glyphicon-plus icon-in-form text-success" ng-click="manager.createNew()"></i>
-					<i class="glyphicon glyphicon-time icon-in-form" ng-click="manager.setSort('urgency')"></i>
-					<i class="glyphicon glyphicon-star icon-in-form" ng-click="manager.setSort('importance')"></i>
-					<i class="glyphicon glyphicon-ok icon-in-form" ng-click="manager.toggleShowDone()"></i>
-				</div>
-				<div class="task col-lg-8">
-					<ul class="list-group">
-						<task-item class="list-group-item"
-							ng-repeat="task in tasks | orderBy: sort" 
-							ng-click="manager.activate(task)"
-							task="task"></task-item>
-					</ul>
-				</div>
-			</section>
-		</div>
-    </section>
+<body ng-controller="TabController as tabs">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#allTasks" aria-controls="allTasks" role="tab" data-toggle="tab">Все задачи</a></li>
+    <li role="presentation" ng-repeat="tab in tabs.tabs"><a ng-href="#task{{tab.id}}" aria-controls="task{{tab.id}}" role="tab" data-toggle="tab" class="text-nowrap">{{tab.name}}
+        <button type="button" class="close" aria-label="Close" ng-click="tabs.close(tab)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </a></li>
+    <li role="presentation"><a role="button" href="#" ng-click="tabs.add()" aria-label="Add"><i class="glyphicon glyphicon-plus text-success" aria-hidden="true"></i></a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="allTasks">
+      <task-list tasks="tabs.tasks" edit="tabs.add"></task-list>
+    </div>
+    <div ng-repeat="tab in tabs.tabs" role="tabpanel" class="tab-pane" id="task{{tab.id}}">
+      <task-form task="tab"></task-form>
+    </div>
+  </div>
 </body>
 </html>

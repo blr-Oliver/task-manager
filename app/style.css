@@ -23,3 +23,19 @@ li {
     padding-bottom: 10px;
     font-size: x-large;
 }
+div[data-toggle="collapse"] {
+  cursor: pointer;
+  background-color: #dee8da;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  top: -5px;
+}
+
+div[data-toggle="collapse"]:hover {
+  background-color: #cdd6c9;
+}
+
+div[data-toggle="collapse"]:active {
+  top: -4px;
+}

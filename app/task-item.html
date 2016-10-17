@@ -1,5 +1,0 @@
-<i class="glyphicon glyphicon-star" ng-class="{invisible: !$ctrl.task.importance}"></i>
-<i class="glyphicon glyphicon-time" ng-class="{invisible: !$ctrl.task.urgency}"></i>
-<span ng-bind="$ctrl.task.description"></span>
-<button class="btn btn-xs btn-success pull-right" ng-if="!$ctrl.task.done" ng-click="$ctrl.task.done = true"><i class="glyphicon glyphicon-ok"></i> Выполнить</button>
-<div class="pull-right text-success" ng-if="$ctrl.task.done"><i class="glyphicon glyphicon-ok"></i> Выполнено</div>

@@ -20,7 +20,7 @@
   }],
   "scripts": {
     "prestart": "bower install",
-    "start": "http-server -p80 -c-1 -s ./app"
+    "start": "http-server -p8080 -c-1 ./app"
   },
   "private": true
 }
