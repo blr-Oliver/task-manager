@@ -15,19 +15,22 @@
 
 <body ng-controller="TabController as tabs">
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#allTasks" aria-controls="allTasks" role="tab" data-toggle="tab">Все задачи</a></li>
-    <li role="presentation" ng-repeat="tab in tabs.tabs"><a ng-href="#task{{tab.id}}" aria-controls="task{{tab.id}}" role="tab" data-toggle="tab" class="text-nowrap">{{tab.name}}
+    <li role="presentation" ng-class="{'active': tabs.activeTask == null}">
+      <a aria-controls="allTasks" role="tab" ng-click="tabs.activate(null)" >Все задачи</a>
+    </li>
+    <li role="presentation" ng-repeat="tab in tabs.tabs" ng-class="{'active': tabs.activeTask == tab.id}">
+      <a aria-controls="task{{tab.id}}" role="tab" class="text-nowrap" ng-click="tabs.activate(tab)">{{tab.name}}
         <button type="button" class="close" aria-label="Close" ng-click="tabs.close(tab)">
           <span aria-hidden="true">&times;</span>
         </button>
-    </a></li>
+      </a></li>
     <li role="presentation"><a role="button" href="#" ng-click="tabs.add()" aria-label="Add"><i class="glyphicon glyphicon-plus text-success" aria-hidden="true"></i></a></li>
   </ul>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="allTasks">
+    <div role="tabpanel" class="tab-pane" id="allTasks" ng-class="{'active': tabs.activeTask === null}">
       <task-list tasks="tabs.tasks" edit="tabs.add"></task-list>
     </div>
-    <div ng-repeat="tab in tabs.tabs" role="tabpanel" class="tab-pane" id="task{{tab.id}}">
+    <div ng-repeat="tab in tabs.tabs" role="tabpanel" class="tab-pane" ng-class="{'active': tabs.activeTask == tab.id}">
       <task-form task="tab"></task-form>
     </div>
   </div>
