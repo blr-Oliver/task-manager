@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <title>Планировщик задач</title>
+<link rel="stylesheet" href="/style.css" />
 <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap-theme.css" />
 <script src="/lib/jquery/dist/jquery.js"></script>
 <script src="/lib/angular/angular.js"></script>
 <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/task-manager.js"></script>
+<script src="/loader.js"></script>
 <script src="/task-list.js"></script>
 <script src="/task-form.js"></script>
 </head>
@@ -28,7 +30,7 @@
   </ul>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane" id="allTasks" ng-class="{'active': tabs.activeTask === null}">
-      <task-list tasks="tabs.tasks" edit="tabs.add"></task-list>
+      <task-list tasks="tabs.tasks" edit="tabs.add" ng-class="{loading: loading}"></task-list edit="tabs.activator">
     </div>
     <div ng-repeat="tab in tabs.tabs" role="tabpanel" class="tab-pane" ng-class="{'active': tabs.activeTask == tab.id}">
       <task-form task="tab"></task-form>

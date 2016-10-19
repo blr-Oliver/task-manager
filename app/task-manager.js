@@ -1,11 +1,20 @@
 angular.module('taskManager', []).controller('TabController', TabController);
 
-TabController.$inject = ['$scope'];
+TabController.$inject = ['$scope', 'taskLoader'];
 TabController.id = 0;
-function TabController($scope){
+function TabController($scope, taskLoader){
   this.tasks = []; //TODO задачи должны загружаться
   this.tabs = [];
   this.activeTask = null;
+
+  var self = this;
+  $scope.loading = true;
+  taskLoader.load().then(function(response){
+    self.tasks = response.data;
+    $scope.loading = false;
+  });
+
+  this.activator = this.add.bind(this);
 }
 
 TabController.prototype = {

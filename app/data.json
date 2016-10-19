@@ -1,0 +1,9 @@
+[
+	{
+		"name" : "Task 1",
+		"description": "Sample task",
+		"priority": "Low",
+		"responsible": "Vasily",
+		"deadline": 1476902724500
+	}
+]

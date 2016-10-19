@@ -2,7 +2,7 @@ body {
     width: 1200px;
     margin: 0 auto;
 }
-textarea {
+_textarea {
     margin: auto;
     display: block;
 }
@@ -12,7 +12,7 @@ textarea {
 .checkbox-inline {
     display: flex;
 }
-li {
+_li {
     list-style: none;
     border: 1px solid #000000;
     width: 500px;
@@ -38,4 +38,8 @@ div[data-toggle="collapse"]:hover {
 
 div[data-toggle="collapse"]:active {
   top: -4px;
+}
+
+.loading{
+  background-color: red;
 }
